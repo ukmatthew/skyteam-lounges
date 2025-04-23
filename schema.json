@@ -1,0 +1,138 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": ["id", "name", "airport", "terminal", "access", "hours"],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[A-Z]{3}-[A-Z0-9]+-[A-Z0-9_]+$",
+        "description": "Unique ID: AIRPORT-TERMINAL-LOUNGE (e.g., LAX-TBIT-SKYTEAM)"
+      },
+      "name": {
+        "type": "string",
+        "description": "Official lounge name (e.g., 'SkyTeam Lounge')"
+      },
+      "airport": {
+        "type": "string",
+        "pattern": "^[A-Z]{3}$",
+        "description": "IATA airport code (e.g., LAX)"
+      },
+      "terminal": {
+        "type": "string",
+        "description": "Terminal code matching GDS systems (e.g., 'TBIT', '2E')"
+      },
+      "location": {
+        "type": "string",
+        "description": "Optional details like 'Near Gate 32'"
+      },
+      "access": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["rule"],
+          "properties": {
+            "rule": {
+              "type": "string",
+              "enum": [
+                "SkyTeamElitePlus",
+                "SkyTeamElite",
+                "BusinessClass",
+                "FirstClass",
+                "PremiumEconomy",
+                "ConciergeKey",
+                "PriorityPass",
+                "LoungeKey",
+                "PaidEntry",
+                "DayPass",
+                "AirlineStatus",
+                "FlightNumber"
+              ],
+              "description": "Access rule type"
+            },
+            "airline": {
+              "type": "string",
+              "pattern": "^[A-Z]{2}$",
+              "description": "Airline IATA code (e.g., 'DL' for Delta), required if rule is 'AirlineStatus' or 'FlightNumber'"
+            },
+            "flightNumber": {
+              "type": "string",
+              "description": "Specific flight number (e.g., 'DL123')"
+            },
+            "fee": {
+              "type": "number",
+              "description": "Fee in USD (e.g., 50), required if rule is 'PaidEntry' or 'DayPass'"
+            },
+            "notes": {
+              "type": "string",
+              "description": "Exceptions (e.g., 'Access only if flying internationally')"
+            }
+          }
+        }
+      },
+      "hours": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["days", "open", "close"],
+          "properties": {
+            "days": {
+              "type": "string",
+              "pattern": "^(Mon|Tue|Wed|Thu|Fri|Sat|Sun)(-(Mon|Tue|Wed|Thu|Fri|Sat|Sun))?$",
+              "description": "Day range (e.g., 'Mon-Fri', 'Sat-Sun')"
+            },
+            "open": {
+              "type": "string",
+              "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$",
+              "description": "Opening time (e.g., '05:00')"
+            },
+            "close": {
+              "type": "string",
+              "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$",
+              "description": "Closing time (e.g., '23:00')"
+            },
+            "notes": {
+              "type": "string",
+              "description": "Exceptions (e.g., 'Closed on holidays')"
+            }
+          }
+        }
+      },
+      "amenities": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "WiFi",
+            "PremiumFood",
+            "Buffet",
+            "BeerAndWine",
+            "SpiritsAndLiquor",
+            "Showers",
+            "ShowersWithCharge",
+            "ConferenceRooms",
+            "BusinessFacilities",
+            "InternetTerminals",
+            "FlightInformation",
+            "SmokingArea",
+            "NonSmokingLounge",
+            "PrivateRooms",
+            "ChildrenFacilities",
+            "SpaServices",
+            "ShoeShine",
+            "MassageChairs",
+            "LuggageStorage",
+            "DayBeds",
+            "ChargingStations",
+            "PrayerRoom",
+            "Gym",
+            "WheelchairAccess"
+          ]
+        }
+      },
+      "lastVerified": {
+        "type": "string",
+        "format": "date",
+        "description": "YYYY-MM-DD"
+      }
+    }
+  }
