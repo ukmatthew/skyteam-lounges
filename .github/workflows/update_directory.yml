@@ -1,0 +1,37 @@
+name: Update Lounge Directory
+on:
+  push:
+    paths:
+      - 'data/lounges/*.json'  # Only trigger when JSON files change
+  pull_request:
+    paths:
+      - 'data/lounges/*.json'
+
+jobs:
+  update-directory:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Check out the repo
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      # Step 3: Run the directory generator script
+      - name: Generate LOUNGES.md
+        run: |
+          pip install pygithub  # Only needed if you use GitHub API
+          python scripts/generate_directory.py
+
+      # Step 4: Commit changes (if any)
+      - name: Commit updated directory
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add LOUNGES.md
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update lounge directory"
+          git push

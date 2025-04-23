@@ -1,0 +1,33 @@
+{
+    "id": "LHR-T3-VIRGIN",
+    "name": "Virgin Clubhouse",
+    "airport": "LHR",
+    "terminal": "T3",
+    "location": "Near Gate 25",
+    "access": [
+      {
+        "rule": "BusinessClass",
+        "airline": ["VS", "DL"],
+        "notes": "Virgin Atlantic Upper Class and DL Business Class only"
+      },
+      {
+        "rule": "AirlineStatus",
+        "airline": "VS",
+        "notes": "Virgin Atlantic Gold Cardholders"
+      }
+    ],
+    "hours": [
+      { "days": "Mon-Fri", "open": "06:00", "close": "22:00" },
+      { "days": "Sat-Sun", "open": "06:30", "close": "21:00" }
+    ],
+    "amenities": [
+      "PremiumFood",
+      "SpiritsAndLiquor",
+      "Showers",
+      "SpaServices",
+      "Gym",
+      "DayBeds",
+      "ChargingStations"
+    ],
+    "lastVerified": "2024-05-01"
+  }

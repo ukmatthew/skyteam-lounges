@@ -1,0 +1,46 @@
+{
+    "id": "SYD-T1-SKYTEAM",
+    "name": "SkyTeam Lounge Sydney",
+    "airport": "SYD",
+    "terminal": "T1",
+    "location": "International Terminal, Airside, Level 2 (near Gate 31)",
+    "access": [
+      {
+        "rule": "BusinessClass",
+        "notes": "Passengers flying Business Class on any SkyTeam member airline"
+      },
+      {
+        "rule": "SkyTeamElitePlus",
+        "notes": "SkyTeam Elite+ members (e.g., Delta Diamond Medallion, Flying Blue Platinum)"
+      },
+      {
+        "rule": "FirstClass",
+        "notes": "Passengers flying First Class on eligible SkyTeam member airlines"
+      },
+      {
+        "rule": "ConciergeKey",
+        "notes": "Delta Concierge Key members (when flying Delta)"
+      }
+    ],
+    "hours": [
+      { 
+        "days": "Mon-Sun", 
+        "open": "04:30", 
+        "close": "13:30",
+        "notes": "Aligned with morning/early afternoon international departures" 
+      }
+    ],
+    "amenities": [
+      "Buffet",
+      "BeerAndWine",
+      "SpiritsAndLiquor",
+      "Showers",
+      "FlightInformation",
+      "WiFi",
+      "BusinessFacilities",
+      "ChargingStations",
+      "WheelchairAccess"
+    ],
+    "lastVerified": "2024-05-20",
+    "notes": "No paid entry available. Lounge operated by SkyTeam partner airline."
+  }
